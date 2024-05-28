@@ -150,8 +150,8 @@ enum char_class_t {
 static const unsigned char header_state_machine[REPLY_STATE_MAX][CC_MAX] = {
 	[REPLY_STATE_INIT] = {
 		[CC_NORMAL] = REPLY_STATE_HEADER,
-		[CC_CR] = ACTION_ERROR,
-		[CC_LF] = ACTION_ERROR,
+		[CC_CR] = REPLY_STATE_BODY | ACTION_END,
+		[CC_LF] = REPLY_STATE_BODY | ACTION_END,
 	},
 	[REPLY_STATE_HEADER] = {
 		[CC_NORMAL] = REPLY_STATE_HEADER,
